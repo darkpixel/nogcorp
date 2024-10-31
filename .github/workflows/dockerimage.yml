@@ -3,7 +3,7 @@ name: Publish package to GHCR
 on: push
 
 env:
-  IMAGE_NAME: ctrl-alt-it
+  IMAGE_NAME: nogcorp
 
 jobs:
 
@@ -35,7 +35,7 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DO_TOKEN }}
-      - name: Get caitkube credentials
+      - name: Get k8s credentials
         run: doctl kubernetes cluster kubeconfig save caitkube
-      - name: Deploy ctrl-alt-it.com
-        run: kubectl -n ctrl-alt-it-com rollout restart deployment ctrl-alt-it
+      - name: Deploy nogcorp
+        run: kubectl -n nogcorp rollout restart deployment nogcorp
