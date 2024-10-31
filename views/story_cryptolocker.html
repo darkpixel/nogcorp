@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="ms-hero-page-override ms-hero-img-city ms-hero-bg-primary">
+    <div class="container">
+        <div class="text-center">
+          <span class="ms-logo ms-logo-lg ms-logo-white center-block mb-2 mt-2 animated zoomInDown animation-delay-5"><i class="zmdi zmdi-bug"></i></span>
+            <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Crypto<span>Locker</span></h1>
+            <p class="lead lead-lg color-white text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">Businesses have lost <span class="color-warning">billions</span> of dollars to this type of infection because of encrypted files, bad backups and downtime.</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card card-hero animated slideInUp animation-delay-8 mb-6">
+        <div class="card-body">
+            <h2 class="color-primary">The Problem</h2>
+            <div class="row">
+                <div class="col-lg-6 text-justify">
+                  <p class="dropcaps text-justify">In 2014 when CryptoLocker was first launched, we had a healthcare client get infected.  The infection took one of their offices offline for several hours while we located the infected machine, restored files from snapshots and backups, and restarted services.</p>
+                  <p class="text-justify">We performed an after-action review and came up with an initial plan for rapid identification and response to the virus.  Our support staff used the new plan a few weeks later when the client was infected again.  We were able to bring the office back online in about an hour, but we still weren't happy.</p>
+                </div>
+                <div class="col-lg-6 text-justify">
+                  <p class="text-justify">Our engineering team was brought in to come up with a solution to provide better detection and response, reduce downtime, and prevent data-loss.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 text-justify">
+                  <p class="dropcaps text-justify">Engineering identified several important targets: detection, isolation, and remediation. We needed a way to detect the presense of an active virus on the network first and foremost.  Once that is accomplished we can take steps to isolate it.  Isolation is achieved by removing the infected computer from the network and re-imaging it--a process that takes about 30 minutes.  Once the virus has been isolated, any 'damage' must be cleaned up--restoring encrypted files for example.</p>
+                  <p class="text-justify">Human identification of the virus was easy.  The virus would attack a fileshare and leave behind any number of files containing strings like 'DECRYPT_INSTRUCT' or 'README_TO_DECRYPT'.  We could easily automate that, but in Windows 2008 our options were limited and time consuming.  The engineering team recommended and migrated the corporate-wide fileshare containing hundreds of thousands of files from Windows to a Linux Samba server.  Linux also had to take over the duties of file replication between the sites since Microsoft's Distributed File System Replication only works under Windows.</p>
+                  <p class="text-justify">Once the migration was complete, the engineering team turned on several of the auditing features in Samba as well as using features of the kernel to detect file read and writes.  The team came up with a simple and automated script to detect variants of CryptoLocker as well as 'suspicious' file access and identify which user and IP address was attempting to infect the server.  When the script detected these conditions, it would immediately notify IT staff.</p>
+                </div>
+                <div class="col-lg-6 text-justify">
+                  <p class="text-justify">After coming up with an automated process for identifying an active virus, engineers set about isolating infected devices.  The identification scripts could identify the IP address, user, and MAC address associated with the infection.  That made the next several steps very easy.  We automatically lock out the user account and then locate 'walk' the switches at the affected site to locate the MAC address of the machine involved.  We then disable the port, kicking the workstation offline.  A technician is alerted so they can call the customer and inform them of the problem as well as schedule swapping the PC out with a fresh one from our provisioning network.</p>
+                  <p class="text-justify">Now that the virus has been isolated and identified, we needed to focus on repairing the damage.  Thanks to the previous solution of migrating to Linux, the solution was already there.  The detection and isolation scripts worked so well that the virus never managed to encrypt more than one directory of files before we caught and stopped it.  And in any case where the virus might go undetected, we have the amazing snapshot, cloning, and recovery tools available in several Linux filesystems to quickly restore the data.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h2 class="color-primary">The Result</h2>
+            <div class="row">
+                <div class="col-lg-6 text-justify">
+                  <p class="dropcaps text-justify">Due to the success of our solution, we were able to detect and isolate most infections within a minute of the customer downloading and launching an infected attachment.  This allowed us to stop being reactive to CryptoLocker and become proactive.</p>
+                  <p class="text-justify">In the past, customers would call us in a panic that their files were encrypted, they were down, and they were losing money.</p>
+                </div>
+                <div class="col-lg-6 text-justify">
+                  <p class="text-justify">Now our teams are already starting to analyze, react, and recover from an infection by the time a customer calls.</p>
+                  <p class="text-justify">Our healthcare customer was repeatedly attacked over the several years, but they rarely have downtime and have yet to lose data.</p>
+                  <p class="text-justify">While Microsoft has been improving the 'File Screening' in Windows, we already have the solution deployed under Linux and FreeBSD and have not found a compelling reason to switch back.</p>
+                </div>
+            </div>
+            <hr class="dotted">
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-info card-flat">
+                        <div class="card-body text-center">
+                          <h2 class="counter color-info">8,034,028+</h2>
+                            <i class="fa fa-file-text color-info font-big"></i>
+                            <h4 class="color-info">Files Protected</h4>
+                            <p>Nearly ten million shared files protected<br><br><br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-warning card-flat">
+                        <div class="card-body text-center">
+                          <h2 class="counter color-info">1,042</h2>
+                            <i class="zmdi zmdi-bug color-warning font-big"></i>
+                            <h4 class="color-warning">Infections</h4>
+                            <p>We've successfully stopped over 1,000 infections<br><br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-danger card-flat">
+                        <div class="card-body text-center">
+                          <h2 class="counter color-info">2,500+</h2>
+                            <i class="zmdi zmdi-coffee color-danger font-big"></i>
+                            <h4 class="color-danger">Windows protected</h4>
+                            <p>Our architecture easily protects Windows Servers and desktops<br><br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-success card-flat">
+                        <div class="card-body text-center">
+                          <h2 class="counter color-info">15</h2>
+                            <i class="zmdi zmdi-time color-success font-big"></i>
+                            <h4 class="color-success">Average recovery</h4>
+                            <p>You're back up in about 15 minutes.<br><br><br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
